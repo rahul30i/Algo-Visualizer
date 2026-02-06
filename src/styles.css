@@ -1,0 +1,257 @@
+:root {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f5f7fb;
+  color: #1f2933;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.theme-dark .controls,
+.theme-dark .visualizer,
+.theme-dark .navbar,
+.theme-dark .intro {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.theme-dark .btn--ghost {
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.main {
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding: 2.5rem 0 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem min(6vw, 5rem);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar__brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar__links a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+.intro {
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: white;
+  display: grid;
+  gap: 1rem;
+}
+
+.intro h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.controls,
+.visualizer {
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: white;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.controls__header h2,
+.visualizer__header h2 {
+  font-size: 1.4rem;
+}
+
+.controls__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.control {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.control--wide {
+  grid-column: span 2;
+}
+
+.control__actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.controls__error {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+input,
+select {
+  border-radius: 0.6rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  background: transparent;
+  color: inherit;
+}
+
+.btn {
+  border-radius: 0.6rem;
+  padding: 0.6rem 1.1rem;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+.btn--secondary {
+  background: #0f172a;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: inherit;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.visualizer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.visualizer__buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.visualizer__canvas {
+  background: rgba(15, 23, 42, 0.04);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.visualizer__svg {
+  width: 100%;
+  height: 340px;
+}
+
+.visualizer__legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.legend::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.legend--comparing {
+  color: #f5a524;
+}
+
+.legend--swapping {
+  color: #ef4444;
+}
+
+.legend--sorted {
+  color: #22c55e;
+}
+
+.visualizer__description {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  border: 1px dashed rgba(148, 163, 184, 0.6);
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navbar__links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .control--wide {
+    grid-column: span 1;
+  }
+
+  .control__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
